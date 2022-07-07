@@ -1,18 +1,18 @@
 
 #include "checker.h"
 
-void IsTempatureOK(float temprature){
-  checkValueRange(temperature, TempMAX, TempMIN);
+int IsTempatureOK(float temprature){
+  checkValueRange(temprature, TempMAX, TempMIN);
 }
 
-void isStateOfChargeOK(float soc)
+int isStateOfChargeOK(float soc)
 {
   checkValueRange(soc, SOCMAX, SOCMIN);
 }
 
-void isChargeRateOK(float chargeRate)
+int isChargeRateOK(float chargeRate)
 {
-  checkChargeRate( chargeRate);
+  checkChargeRateLimit( chargeRate);
 }
 
 int checkValueRange(float value, float MAX, float MIN)
@@ -38,16 +38,17 @@ int checkChargeRateLimit(float value)
 
 int batteryIsOk(float temperature, float soc, float chargeRate)
 {
-  IsTempatureOK(temperature) && IsSOCOK(soc) && IsChangeRateOK(chargeRate);
+return  ( IsTempatureOK(temperature)) && ( IsSOCOK(soc)) && (IsChangeRateOK(chargeRate));
 }
 
-void Tester();
+void Tester()
 {
   assert(batteryIsOk(25, 70, 0.7));
   assert((batteryIsOk(50, 85, 0))==FALSE);
 }
 
-void main()
+int main()
 {
   Tester();
+  return 0;
 }
