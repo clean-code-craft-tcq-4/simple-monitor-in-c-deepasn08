@@ -38,7 +38,7 @@ int checkChargeRateLimit(float value)
 
 int batteryIsOk(float temperature, float soc, float chargeRate)
 {
-return  ( IsTempatureOK(temperature)) && ( IsSOCOK(soc)) && (IsChangeRateOK(chargeRate));
+return  ( IsTempatureOK(temperature)) && ( isStateOfChargeOK(soc)) && (isChargeRateOK(chargeRate));
 }
 
 void Tester()

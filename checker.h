@@ -9,8 +9,8 @@
 #define TRUE 1
 #define FALSE 0
 
-void IsTempatureOK(float temprature);
-void isStateOfChargeOK(float soc);
+int IsTempatureOK(float temprature);
+int isStateOfChargeOK(float soc);
 int checkValueRange(float value,float tempMax, float tempMin);
 int checkChargeRateLimit(float value);
 int batteryIsOk(float temperature, float soc, float chargeRate);
