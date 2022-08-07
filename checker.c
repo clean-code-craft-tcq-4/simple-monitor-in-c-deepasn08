@@ -1,50 +1,25 @@
 
 #include "checker.h"
 
-int IsTempatureOK(float temprature){
-  checkValueRange(temprature, TempMAX, TempMIN);
-}
 
-int isStateOfChargeOK(float soc)
+int batteryIsOk(float temp, enum TEMP_UNIT units, float soc, float cr)
 {
-  checkValueRange(soc, SOCMAX, SOCMIN);
-}
-
-int isChargeRateOK(float chargeRate)
-{
-  checkChargeRateLimit( chargeRate);
-}
-
-int checkValueRange(float value, float MAX, float MIN)
-{
-  if (value < MIN || value > MAX)
-  {
-    printf("Temperature out of range!\n");
-    return FALSE;
-  }
-  else
-    return TRUE;
-}
-
-int checkChargeRateLimit(float value)
-{
-  if (value > ChangeRate)
-  {
-    printf("Charge Rate out of range!\n");
-    return FALSE;
-  }
-  else return TRUE;
-}
-
-int batteryIsOk(float temperature, float soc, float chargeRate)
-{
-return  ( IsTempatureOK(temperature)) && ( isStateOfChargeOK(soc)) && (isChargeRateOK(chargeRate));
+  temp = ConvertToCelcius(temp, units);
+  (temperatureWarnInd() && stateOfChargeWarnInd() && chargeRateinLimitWarnInd());
+  return  ( IsTempatureOK() &&  isStateOfChargeOK() && isChargeRateinLimit());
 }
 
 void Tester()
 {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert((batteryIsOk(50, 85, 0))==FALSE);
+  assert(batteryIsOk(25, D, 70, 0.7));
+
+  assert(batteryIsOk(35, F, 70, 0.7));
+
+  assert((batteryIsOk(50, D, 85, 0))==FALSE);
+
+  assert(batteryIsOk(2.5, F, 85, 0.7)==FALSE);
+
+  assert(batteryIsOk(10, D, 55, 0.9)==FALSE);
 }
 
 int main()
