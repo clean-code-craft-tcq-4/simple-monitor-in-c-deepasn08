@@ -23,4 +23,4 @@ enum TEMP_UNIT {D ,F};
 int WarningIndicator (float value,float Max, float Min, char* paramter);
 int checkValueRange(float value, float Max, float Min, char* paramter);
 int batteryIsOk(float temperature,enum TEMP_UNIT units, float soc, float chargeRate);
-void tester();
+void Tester();
