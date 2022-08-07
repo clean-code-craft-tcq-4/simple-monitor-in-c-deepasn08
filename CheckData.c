@@ -14,10 +14,10 @@ int checkValueRange(float value, float MAX, float MIN, char* paramter)
   if (value < MIN || value > MAX)
   {
     printf("%f value %s out of range!\n", value,paramter);
-    return FALSE;
+    return OUTOFRANGE;
   }
   else
-    return TRUE;
+    return INRANGE;
 }
 
 int WarningIndicator (float value,float Max, float Min, char* paramter)
