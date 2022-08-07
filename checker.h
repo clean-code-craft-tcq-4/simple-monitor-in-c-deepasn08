@@ -7,8 +7,8 @@
 #define SOCMIN 20
 #define ChangeRateMIN 0.0
 #define ChangeRateMAX 0.8
-#define TRUE 1
-#define FALSE 0
+#define INRANGE 1
+#define OUTOFRANGE 0
 #define TOLORENCELIMIT (5/100)
 enum TEMP_UNIT {D ,F};
 
