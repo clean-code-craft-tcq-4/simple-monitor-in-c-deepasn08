@@ -4,7 +4,9 @@
 int batteryIsOk(float temp, enum TEMP_UNIT units, float soc, float cr)
 {
   temp = ConvertToCelcius(temp, units);
-  (temperatureWarnInd() && stateOfChargeWarnInd() && chargeRateinLimitWarnInd());
+  temperatureWarnInd();
+  stateOfChargeWarnInd();
+  chargeRateinLimitWarnInd();
   return  ( IsTempatureOK() &&  isStateOfChargeOK() && isChargeRateinLimit());
 }
 
