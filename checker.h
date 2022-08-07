@@ -16,7 +16,6 @@ enum TEMP_UNIT {D ,F};
 #define stateOfChargeWarnInd() WarningIndicator(soc, SOCMAX, SOCMIN, "Stateofcharge")
 #define chargeRateinLimitWarnInd() WarningIndicator(cr, ChangeRateMAX, ChangeRateMIN, "ChargeRate")
 
-
 #define IsTempatureOK() checkValueRange(temp, TempMAX, TempMIN, "temperature")
 #define isStateOfChargeOK() checkValueRange(soc, SOCMAX, SOCMIN, "Stateofcharge")
 #define isChargeRateinLimit() checkValueRange(cr, ChangeRateMAX, ChangeRateMIN, "ChargeRate")
